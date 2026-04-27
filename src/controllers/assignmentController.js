@@ -1,8 +1,6 @@
 const Assignment = require('../models/Assignment');
 
-// @desc    Get all assignments for logged in user
-// @route   GET /api/assignments
-// @access  Private
+
 const getAssignments = async (req, res) => {
   try {
     const assignments = await Assignment.find({ user: req.user.id }).sort({ dueDate: 1 });
@@ -19,9 +17,7 @@ const getAssignments = async (req, res) => {
   }
 };
 
-// @desc    Get single assignment
-// @route   GET /api/assignments/:id
-// @access  Private
+
 const getAssignmentById = async (req, res) => {
   try {
     const assignment = await Assignment.findById(req.params.id);
@@ -53,9 +49,7 @@ const getAssignmentById = async (req, res) => {
   }
 };
 
-// @desc    Create a new assignment
-// @route   POST /api/assignments
-// @access  Private
+
 const createAssignment = async (req, res) => {
   try {
     const { title, subject, dueDate, estimatedHours, description } = req.body;
